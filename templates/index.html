@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/style/style.css">
+</head>
+<body>
+    <header>
+        <h1>Pneumonia Detection</h1>
+    </header>
+    <form id="uploadForm" action="/api/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">predict</button>
+    </form>
+    <div id="result"></div>
+</body>
+<script>
+    document.getElementById('uploadForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const response = await fetch('/api/predict', {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        document.getElementById('result').innerText = result.prediction + " (Confidence: " + result.confidence + ")";
+    };
+</script>
+</html>
