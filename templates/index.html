@@ -11,11 +11,13 @@
         <h1>Pneumonia Detection</h1>
     </header>
     <main>
-        <form id="uploadForm" action="/api/predict" method="post" enctype="multipart/form-data">
-            <input type="file" name="image" accept="image/*" required>
-            <button type="submit">predict</button>
-        </form>
-        <div id="result"></div>
+        <section>
+            <form id="uploadForm" action="/api/predict" method="post" enctype="multipart/form-data">
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">predict</button>
+            </form>
+            <div id="result"></div>
+        </section>
     </main>
 </body>
 <script src="{{ url_for('static', filename='assets/scripts/index.js') }}"></script>
