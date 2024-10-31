@@ -7,6 +7,18 @@ header {
     text-align: center;
 }
 
-main section {
-    text-align: center;
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+form {
+    margin-top: 25px;
+}
+
+.preview img {
+    width: 256px;
+    height: 256px;
 }
