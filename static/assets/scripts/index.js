@@ -6,5 +6,8 @@ document.getElementById('uploadForm').onsubmit = async function (e) {
         body: formData
     });
     const result = await response.json();
-    document.getElementById('result').innerText = result.prediction + " (Confidence: " + result.confidence + ")";
+    document.getElementById('result').innerHTML = `
+    <p>Status: ${result.prediction}</p>
+    <p>Confidence: ${result.confidence}</p>
+    `;
 }
