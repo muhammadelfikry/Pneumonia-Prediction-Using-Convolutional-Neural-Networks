@@ -4,23 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pneumonia Detection</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style.css' )}}">
+    <meta name="description" content="Upload Chest X-ray Image to Detect Pneumonia using an AI-powered prediction model.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/styles/style.css') }}">
 </head>
 <body>
     <header>
         <h1>Pneumonia Detection</h1>
     </header>
+
     <main>
-        <div class="preview">
-            <img id="imagePreview" src="{{ url_for('static', filename='assets/images/upload-image.png')}}" alt="Image Preview">
-        </div>
-        <form id="uploadForm" action="/api/predict" method="post" enctype="multipart/form-data">
-            <input id="imageInput" type="file" name="image" accept="image/*" onchange="previewImage()" required>
-            <button type="submit">predict</button>
-        </form>
-        <div id="result"></div>
+        <section class="image-preview">
+            <img id="imagePreview" src="{{ url_for('static', filename='assets/images/upload-image.png') }}" alt="Image Preview">
+        </section>
+
+        <section class="upload-form">
+            <form id="uploadForm" action="/api/predict" method="post" enctype="multipart/form-data">
+                <label for="imageInput">Upload Chest X-ray:</label>
+                <input
+                    id="imageInput"
+                    type="file"
+                    name="image"
+                    accept="image/png, image/jpeg"
+                    onchange="previewImage()"
+                    required
+                >
+                <button type="submit">Predict</button>
+            </form>
+        </section>
+
+        <section id="result"></section>
     </main>
+
+    <script src="{{ url_for('static', filename='assets/scripts/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/scripts/imagePreview.js') }}"></script>
 </body>
-<script src="{{ url_for('static', filename='assets/scripts/index.js') }}"></script>
-<script src="{{ url_for('static', filename='assets/scripts/imagePreview.js') }}"></script>
 </html>
